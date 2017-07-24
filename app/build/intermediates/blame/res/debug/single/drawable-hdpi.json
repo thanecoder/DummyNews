@@ -12,11 +12,27 @@
         "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_home.png"
     },
     {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_dashboard.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_dashboard.png"
+    },
+    {
         "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_bookmark.png",
         "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_bookmark.png"
     },
     {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_sports.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_sports.png"
+    },
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_delete.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_delete.png"
+    },
+    {
         "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_world.png",
         "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_world.png"
+    },
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_tech.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_tech.png"
     }
 ]

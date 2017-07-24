@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
-        "source": "C:\\Users\\NICHAT\\.android\\build-cache\\0f9503e6efe635a5d44a495a3b493c08c19bc085\\output\\res\\drawable\\abc_btn_colored_material.xml"
-    },
-    {
         "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
         "source": "C:\\Users\\NICHAT\\.android\\build-cache\\0f9503e6efe635a5d44a495a3b493c08c19bc085\\output\\res\\drawable\\abc_btn_check_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\NICHAT\\.android\\build-cache\\0f9503e6efe635a5d44a495a3b493c08c19bc085\\output\\res\\drawable\\abc_btn_colored_material.xml"
     },
     {
         "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_edit_text_material.xml",

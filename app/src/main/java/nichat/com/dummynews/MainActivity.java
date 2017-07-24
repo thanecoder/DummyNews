@@ -5,6 +5,7 @@ package nichat.com.dummynews;
  */
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -36,11 +38,12 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AboutUs.OnFragmentInteractionListener,OfflineData.OnFragmentInteractionListener{
 
     public static final String LOG_TAG = MainActivity.class.getName();
     protected ArrayList<NewsItem> news1=new ArrayList<NewsItem>();
     protected ArrayList<NewsItem> news2=new ArrayList<NewsItem>();
+    //private SwipeRefreshLayout swiper;
 
 
 /*    private static final String NEWS_REQUEST_URL="https://newsapi.org/v1/articles?source=the-huffington-post&sortBy=top&apiKey=c4c45240182f4d42bfae496c15f40b5a";*/
@@ -63,6 +66,35 @@ public class MainActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.i("whereIAm","I have just entered onCreate of MainActivity");
+//        getWindow().getDecorView().setSystemUiVisibility(
+//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+//        swiper=(SwipeRefreshLayout)findViewById(R.id.swiper);
+//        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                Log.i(LOG_TAG, "onRefresh called from SwipeRefreshLayout");
+//
+//                // This method performs the actual data-refresh operation.
+//                // The method calls setRefreshing(false) when it's finished.
+//                myUpdateOperation();
+//            }
+//        });
+//        // Configure the refreshing colors
+//        swiper.setColorSchemeResources(android.R.color.holo_blue_bright,
+//                                       android.R.color.holo_green_light,
+//                                       android.R.color.holo_orange_light,
+//                                       android.R.color.holo_red_light);
+
+
+
+
+
 
         //Adding Toolbar to Activity
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
@@ -71,22 +103,24 @@ public class MainActivity extends AppCompatActivity {
         //Setting ViewPager for each tabs
         ViewPager viewPager=(ViewPager)findViewById(R.id.viewPager);
         setupViewPager(viewPager);
-        viewPager.setOffscreenPageLimit(1);
+        viewPager.setOffscreenPageLimit(0);
         viewPager.setCurrentItem(0);
 
         int icons[]={
-                R.drawable.ic_home,
+                R.drawable.ic_dashboard,
                 R.drawable.ic_home,
                 R.drawable.ic_world,
-                R.drawable.ic_home,
-                R.drawable.ic_bookmark,
+                R.drawable.ic_sports,
+                R.drawable.ic_tech,
+                R.drawable.ic_favorite
         };
 
         TabLayout tabs =(TabLayout)findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        tabs.setTabGravity(TabLayout.GRAVITY_FILL);
-        tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.red_darken_1));
-        for(int i=0;i<5;i++)
+        tabs.setTabGravity(TabLayout.GRAVITY_CENTER);
+        tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorAccent));
+        tabs.setTabTextColors((getResources().getColor(R.color.primaryTextDarkColor)),(getResources().getColor(R.color.primaryTextColor)));
+        for(int i=0;i<6;i++)
         {
             tabs.getTabAt(i).setIcon(icons[i]);
         }
@@ -95,17 +129,43 @@ public class MainActivity extends AppCompatActivity {
         {
             downloadNews(NEWS_REQUEST_URL[i]);
         }*/
+        Log.i("whereIAm","I am now exiting onCreate of MainActivity");
     }
 
 
     private void setupViewPager(ViewPager viewPager) {
+        Log.i("whereIAm","I am in setUpViewPager of MainActivity");
+        Log.i("whatIDo","I am now creating adapter object");
         Adapter adapter=new Adapter(getSupportFragmentManager());
+        adapter.notifyDataSetChanged();
+        Log.i("whatIDid","I created adapter object");
+        Log.i("whatIDo","I am now adding HomeFragment to adapter object");
         adapter.addFragment(new HomeFragment(),"Home");
+        Log.i("whatIDid","I added HomeFragment to adapter object");
+        Log.i("whatIDo","I am now adding NationalFragment to adapter object");
         adapter.addFragment(new NationalFragment(),"National");
+        Log.i("whatIDid","I added NationalFragment to adapter object");
+        Log.i("whatIDo","I am now adding WorldFragment to adapter object");
         adapter.addFragment(new WorldFragment(),"World");
+        Log.i("whatIDid","I added WorldFragment to adapter object");
+        Log.i("whatIDo","I am now adding SportsFragment to adapter object");
         adapter.addFragment(new SportsFragment(),"Sports");
-        adapter.addFragment(new HomeFragment(),"Bookmarks");
+        Log.i("whatIDid","I added SportsFragment to adapter object");
+        Log.i("whatIDo","I am now adding TechFragment to adapter object");
+        adapter.addFragment(new TechFragment(),"Tech");
+        Log.i("whatIDid","I added TechFragment to adapter object");
+        Log.i("whatIDo","I am now adding OfflineData Fragment to adapter object");
+        adapter.addFragment(new OfflineData(),"Offline");
+        Log.i("whatIDid","I added OfflineData Fragment to adapter object");
+        //adapter.addFragment(new BookMarksFragment(),"Bookmarks");
+        Log.i("whereIAm","I am now exiting setUpViewPager of MainActivity");
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        //left empty
+        Log.i("whereIAm","I am in onFragmentInteraction of MainActivity");
     }
 
     public static class Adapter extends FragmentPagerAdapter
@@ -119,22 +179,28 @@ public class MainActivity extends AppCompatActivity {
 
         public void addFragment(Fragment fragment,String title)
         {
+            Log.i("whereIAm","I am in addFragment of MainActivity in class Adapter");
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
 
 
 
-        public Fragment getItem(int position) {
+        public Fragment getItem(int position)
+        {
+            Log.i("whereIAm","I am in getItem of MainActivity in class Adapter");
             return mFragmentList.get(position);
         }
 
-        public int getCount() {
+        public int getCount()
+        {
+            Log.i("whereIAm","I am in getCount of MainActivity in class Adapter");
             return mFragmentList.size();
         }
 
         public CharSequence getPageTitle(int position)
         {
+            Log.i("whereIAm","I am in getPageTitle of MainActivity in class Adpater");
             return mFragmentTitleList.get(position);
         }
     }

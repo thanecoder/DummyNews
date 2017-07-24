@@ -29,7 +29,6 @@ import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
@@ -41,12 +40,10 @@ import java.util.ArrayList;
 import static nichat.com.dummynews.R.layout.item_card;
 
 
-public class SportsFragment extends Fragment
-{
-
+public class TechFragment extends Fragment {
     static Typeface typeface;
 
-    private static final String NEWS_REQUEST_URL=" https://newsapi.org/v1/articles?source=espn-cric-info&sortBy=latest&apiKey=c4c45240182f4d42bfae496c15f40b5a";
+    private static final String NEWS_REQUEST_URL=" https://newsapi.org/v1/articles?source=the-verge&sortBy=top&apiKey=c4c45240182f4d42bfae496c15f40b5a";
 
     ArrayList<NewsItem> news3=new ArrayList<>();
     protected ArrayList<NewsItem> news1=new ArrayList<>();
@@ -59,7 +56,7 @@ public class SportsFragment extends Fragment
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         news3=downloadNews(NEWS_REQUEST_URL);
-        Log.i("whereIAm","I am in onCreate of Sports Fragment");
+        Log.i("whereIAm","I am in onCreate of Tech Fragment");
         DBAdapter db=new DBAdapter(getContext());
         db.open();
         typeface= Typeface.createFromAsset(getActivity().getAssets(),"Roboto-Light.ttf");
@@ -79,14 +76,13 @@ public class SportsFragment extends Fragment
             "https://newsapi.org/v1/articles?source=the-guardian-uk&sortBy=top&apiKey=c4c45240182f4d42bfae496c15f40b5a",
             "https://newsapi.org/v1/articles?source=the-huffington-post&sortBy=top&apiKey=c4c45240182f4d42bfae496c15f40b5a"
     };*/
-
-    //This onCreateView method here is without Swipe Refresh Layout.Remember to comment the Swipe Refresh layout in XML file also,when you do not want the Swipe Refresh Layout.
+//This onCreateView method here is without Swipe Refresh Layout.Remember to comment the Swipe Refresh layout in XML file also,when you do not want the Swipe Refresh Layout.
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
 //    {
-//        Log.i("whereIAm","I am in onCreateView of SportsFragment");
-//        Log.i("whatIDo","I am now creating an object of RecyclerView in Sports Fragment");
+//        Log.i("whereIAm","I am in onCreateView of TechFragment");
+//        Log.i("whatIDo","I am now creating an object of RecyclerView in TechFragment");
 //        RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
-//        Log.i("whatIDid","I created an object of RecyclerView in SportsFragment");
+//        Log.i("whatIDid","I created an object of RecyclerView in TechFragment");
 //        /*SwipeRefreshLayout mSwipe = (SwipeRefreshLayout)recyclerView.findViewById(R.id.swipeRefreshLayout);
 //        mSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 //            @Override
@@ -96,7 +92,7 @@ public class SportsFragment extends Fragment
 //        });*/
 //        try
 //        {
-//            Log.i("whatIDo","I am now setting adapter for recyclerview in SportsFragment");
+//            Log.i("whatIDo","I am now setting adapter for recyclerview in TechFragment");
 //            ContentAdapter newsAdapter=new ContentAdapter(recyclerView.getContext(),news3);
 //            recyclerView.setAdapter(newsAdapter);
 //            newsAdapter.notifyDataSetChanged();
@@ -109,42 +105,20 @@ public class SportsFragment extends Fragment
 //        }
 //        return recyclerView;
 //    }
-//
-//    public static class ViewHolder extends RecyclerView.ViewHolder
-//    {
-//        public ImageView picture;
-//        public TextView title;
-//        public TextView description;
-//        public ImageButton favorite_button;
-//        public ViewHolder(LayoutInflater inflater, ViewGroup parent)
-//        {
-//            super(inflater.inflate(item_card, parent, false));
-//            Log.i("whereIAm","I am in constructor of ViewHolder of Sports Fragment");
-//            picture = (ImageView) itemView.findViewById(R.id.card_image);
-//            title = (TextView) itemView.findViewById(R.id.card_title);
-//            description = (TextView) itemView.findViewById(R.id.card_desc);
-//            favorite_button=(ImageButton)itemView.findViewById(R.id.favorite_button);
-//            title.setTypeface(typeface);
-//            description.setTypeface(typeface);
-//            Log.i("whereIAm","I am exiting constructor of ViewHolder of Sports Fragment");
-//
-//        }
-//
-//    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
     {
-        Log.i("whereIAm","I am in onCreateView of Sports FRAGMENT");
-        Log.i("whatIDo","I am now creating an object of RecyclerView in Sports FRAGMENT");
-        View v=inflater.inflate(R.layout.recycler_view,container,false);
+        Log.i("whereIAm","I am in onCreateView of Tech FRAGMENT");
+        Log.i("whatIDo","I am now creating an object of RecyclerView in Tech FRAGMENT");
         //recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
+        View v=inflater.inflate(R.layout.recycler_view,container,false);
         recyclerView = (RecyclerView)v.findViewById(R.id.my_recycler_view);
-        Log.i("whatIDid","I created an object of RecyclerView in Sports FRAGMENT");
+        Log.i("whatIDid","I created an object of RecyclerView in Tech FRAGMENT");
         mSwipe=(SwipeRefreshLayout)v.findViewById(R.id.mSwipe);
         //mSwipe.setColorSchemeResources(R.color.colorPrimary);
         try
         {
-            Log.i("whatIDo","I am now setting adapter for recyclerview in Sports FRAGMENT");
+            Log.i("whatIDo","I am now setting adapter for recyclerview in Tech FRAGMENT");
             layoutManager=new LinearLayoutManager(getContext());
             recyclerView.setLayoutManager(layoutManager);
             newsAdapter=new ContentAdapter(recyclerView.getContext(),news3);
@@ -179,6 +153,28 @@ public class SportsFragment extends Fragment
         });
         return v;
     }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder
+    {
+        public ImageView picture;
+        public TextView title;
+        public TextView description;
+        public ImageButton favorite_button;
+        public ViewHolder(LayoutInflater inflater, ViewGroup parent)
+        {
+            super(inflater.inflate(item_card, parent, false));
+            Log.i("whereIAm","I am in constructor of ViewHolder of TechFragment");
+            picture = (ImageView) itemView.findViewById(R.id.card_image);
+            title = (TextView) itemView.findViewById(R.id.card_title);
+            description = (TextView) itemView.findViewById(R.id.card_desc);
+            favorite_button=(ImageButton)itemView.findViewById(R.id.favorite_button);
+            title.setTypeface(typeface);
+            description.setTypeface(typeface);
+            Log.i("whereIAm","I am exiting constructor of ViewHolder of TechFragment");
+        }
+
+    }
+
     /**
      * Adapter to display recycler view.
      */
@@ -189,28 +185,29 @@ public class SportsFragment extends Fragment
         ArrayList<NewsItem> news;
         DBAdapter db=new DBAdapter(getContext());
 
+
         /*private static final String NEWS_REQUEST_URL="https://newsapi.org/v1/articles?source=the-hindu&sortBy=latest&apiKey=c4c45240182f4d42bfae496c15f40b5a";
         ArrayList<NewsItem> news=downloadNews(NEWS_REQUEST_URL);*/
 
 
         public ContentAdapter (Context context,ArrayList<NewsItem> news) throws JSONException {
-            Log.i("whereIAm","I am in constrctor of ContentAdapter of SportsFragment in class ContentAdapter");
+            Log.i("whereIAm","I am in constructor of ContentAdapter of TechFragment in class ContentAdapter");
             myContext=context;
             this.news=news;
-            Log.i("whereIAm","I am in exiting constructor of ContentAdapter of SportsFragment in class ContentAdapter");
+            Log.i("whereIAm","I am in exiting constructor of ContentAdapter of TechFragment in class ContentAdapter");
         }
 
 
         public HomeFragment.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            Log.i("whereIAm","I am in onCreateViewHolder of SportsFragment in class ContentAdapter");
+            Log.i("whereIAm","I am in onCreateViewHolder of Tech Fragment in class ContentAdapter");
             HomeFragment.ViewHolder vHolder=new HomeFragment.ViewHolder(LayoutInflater.from(parent.getContext()),parent);
-            Log.i("whereIAm","I am exiting onCreateViewHolder of SportsFragment in class ContentAdapter");
+            Log.i("whereIAm","I am exiting onCreateViewHolder of Tech Fragment in class ContentAdapter");
             return vHolder;
         }
 
         public void onBindViewHolder(HomeFragment.ViewHolder holder, int position) {
             final NewsItem currentNews=news.get(position);
-            Log.i("whereIAm","I am in onBindViewHolder of SportsFragment in class ContentAdapter");
+            Log.i("whereIAm","I am in onBindViewHolder of Tech Fragment in class ContentAdapter");
             Glide.with(myContext).load(currentNews.getImage()).into(holder.picture);
             holder.title.setText(currentNews.getTitle());
             holder.description.setText(currentNews.getDescription());
@@ -234,7 +231,7 @@ public class SportsFragment extends Fragment
                     Toast.makeText(getContext(),"Added to favorites", Toast.LENGTH_SHORT).show();
                 }
             });
-            Log.i("whereIAm","I am exiting onBindViewHolder of SportsFragment in class ContentAdapter");
+            Log.i("whereIAm","I am exiting onBindViewHolder of Tech Fragment in class ContentAdapter");
         }
 
 
@@ -272,7 +269,7 @@ public class SportsFragment extends Fragment
 
         // Start the queue
         mRequestQueue.start();
-        Log.i("whatIDo","I am creating a JSON objectrequest of Sports Fragment");
+        Log.i("whatIDo","I am creating a JSON object request of Tech Fragment");
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
             ArrayList<NewsItem> news=new ArrayList<>();
@@ -315,13 +312,14 @@ public class SportsFragment extends Fragment
             public void onErrorResponse(VolleyError error) {
                 Log.v("Volley","Error");
                 //Toast.makeText(getContext(),"SPORTS FRAGMENT."+error.toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(),"Please check internet connection for Sports news", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"Please check internet connection for tech news", Toast.LENGTH_LONG).show();
+
             }
         });
-        Log.i("whatIDo","I am adding jsonObjectRequest to requestQueue of SportsFragment");
+        Log.i("whatIDo","I am adding jsonObjectRequest to requestQueue of Tech Fragment");
         mRequestQueue.add(jsonObjectRequest);
-        Log.i("whatIDid","I added jsonObjectRequest to requestQueue of SportsFragment");
-        Log.i("whereIAm","I am exiting a JSON objectrequest of SportsFragment");
+        Log.i("whatIDid","I added jsonObjectRequest to requestQueue of Tech Fragment");
+        Log.i("whereIAm","I am exiting a JSON objectrequest of Tech Fragment");
         return news1;
     }
 }

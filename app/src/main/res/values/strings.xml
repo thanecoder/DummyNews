@@ -1,77 +1,8 @@
 <resources>
     <string name="app_name">DummyNews</string>
-    <string name="n1">Bird flu scare: Eight birds die in Gwalior zoo in last 48 hours</string>
-    <string name="n2">Inferno review: Tom Hanks, Irrfan suffer major burns in this fireball of a film</string>
-    <string name="n3">Aamir Khan avoids query on Pak film ban at MAMI</string>
-    <string name="n4">New Zealand score first win of tour, defeat India by six runs in 2nd ODI</string>
-    <string name="n5">Dharamsala, Pune, Ranchi first-time Test venues for India-Australia series</string>
-    <string name="n6">India is Facebook’s top priority, driving engagement to catch up with Google</string>
-    <string name="n7">Pakistan violates ceasefire along IB in kathuna; BSF jawan injured </string>
-    <string name="n8">Why Apple may be the winner as Androids battle</string>
-
-    <string name="ecnews">In Madhya Pradesh, eight birds have died in Gwalior zoo in the last 48 hours from infection, officials’ state.
-        Samples have been sent to veterinary hospital for investigation and Precautionary measures have been taken at the zoo in the
-        wake of reports of bird flu from some areas of the country. Meanwhile, National Zoological Park in Delhi,
-        which has been closed temporarily, has reported fresh cases of deaths of pelican birds.
-        The zoo was shut down on Wednesday after nine birds, including painted storks, ducks and pelicans died of Avian influenza
-        at its premises between October 14 and October 17.
-    </string>
-
-    <string name="movie2">The Da Vinci Code, and its sequel Angels and Demons (which were both much better films that most give them
-        credit for) were unfairly panned upon release. Some of those murmurs about Da Vinci Code getting booed for 15 minutes by
-        angry Frenchmen immediately after its Cannes premiere in 2006 are still invoked when reminiscing about notorious cinematic
-        disasters. But here’s the thing – and once again, this is something most would agree on – both films have, in the years that
-        followed, developed quite an audience at home.
-    </string>
-
-    <string name="movie3">Superstar Aamir Khan chose to stay mum on the issue of Pakistani film not being screened at the ongoing
-        MAMI festival here and the threats over the release of Karan Johar’s Ae Dil Hai Mushkil. During the opening ceremony of
-        the 18th Jio MAMI festival, Aamir was asked to give his opinion on the opposition to screening of Pakistani film and the
-        Ae Dil Hai Mushkil controversy, the actor said, “MAMI se poocho”, before walking off. Following the Uri terror attack,
-        the MNS has threatened not to allow screening of Johar’s film which features Pakistani actor Fawad Khan.
-    </string>
-
-    <string name="sports2">Virat Kohli and Kane Williamson are pivotal for India and New Zealand. If they fail, their teams struggle.
-        And if they click, it carries their team to victory. With all focus on New Zealand’s faltering batting unit,
-        Williamson showed his class at the Ferozeshah Kotla on Thursday, scoring his eighth ODI century (118) to take New Zealand
-        to a fighting total 242, and eventually an exciting six-run win in the second match to level the series 1-1. Kohli failed
-        and India’s batting struggled as they lost, handing New Zealand their first ODI victory over India on their home
-        turf since Cuttack, 2003.
-    </string>
-
-    <string name="sports3">The picturesque Himalayan hill station of Dharamsala will make its debut as a Test venue by hosting the
-        finale of a much-anticipated series between India and Australia starting February next year. Dharamsala, which is home to
-        the Dalai Lama, is the latest beneficiary of a new drive by the Indian board to take five-day cricket to smaller venues,
-        along with Ranchi and Pune, which will also host their first Test matches. The opener of the Border-Gavaskar Trophy 2017
-        will be played from February 23-27 in Pune followed by matches in Bengaluru, Ranchi and Dharamsala, India’s board said in
-        a statement Friday.
-    </string>
-
-    <string name="tech2">Ever tried to find out how many apps Google owns on the Indian Android Play Store? The answer is 114.
-        In stark contrast, Facebook owns a measly eight apps including WhatsApp, Instagram and Oculus VR. But why are we
-        talking about apps? It is because Facebook says that it doesn’t believe in releasing multiple apps to take over a market
-        from competition, but in pushing relevant content and driving engagement. Companies like Facebook, Microsoft, Google have been
-        fighting to take the maximum pie as India embarks on its digital journey or data revolution. The country presents itself as
-        the new revenue generating region with millions of users coming online for the first time mostly via smartphones.
-    </string>
-
-    <string name="news2">JAMMU : A BSF jawan was on Friday injured as Pakistani troops violated ceasefire for the fourth consecutive
-        day along the International Vorder in Jammu and kashmir’s Kathua district. BSF troops had on Thursday foiled a major infliation bid in
-        the same area by a group of six militants. "Pakistani troops used small arms, automatic weapons and 82 mm mortars bombs to
-        target Indian positions,he said. India and Pakistani troops are exchanging fire for past four days in the sector. Pakistani
-        troops had yesterday heavily shared areas in Bhimber Gali sector along the LoC in Rajouri district.
-    </string>
-
-    <string name="tech1">One man’s loss is another man’s gain. And the gain is much larger if you replace ‘man’ with ‘company’.
-        So you cannot blame a clutch of smartphone makers to be licking their lips at Samsung’s misfortune. As the South Korean
-        giant decided to scrap the beleaguered Note7 globally, other makers of Android phones are counting their chickens.
-        But can they rule out their farm being invaded by Apple’s iOS? “Samsung might be able to pacify a few customers with the
-        promise of the S7 Edge, but most of them will move away,” said Vishal Tripathi, research director at Gartner.Other Android
-        firms are not seen to be in the same league as Samsung. Kawoosa said it won’t be easy for companies like LG, Huawei, OnePlus,
-        or Xiaomi to encroach on Samsung’s turf. “It will take a solid marketing strategy, since there is not enough time left for
-        them to come up with a new device just targeted to fill the Note 7 void,” said Kawoosa.
-    </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_us">Welcome to this app</string>
+    <string name="powered_by">Powered by NewsAPI.org </string>
 </resources>

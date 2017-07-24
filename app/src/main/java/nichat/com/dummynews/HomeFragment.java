@@ -18,6 +18,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,17 +50,23 @@ public class HomeFragment extends Fragment
 {
 
     private static final String NEWS_REQUEST_URL="https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=c4c45240182f4d42bfae496c15f40b5a";
-
     static Typeface typeface;
+
 
     ArrayList<NewsItem> news3=new ArrayList<>();
     protected ArrayList<NewsItem> news1=new ArrayList<>();
     protected ArrayList<NewsItem> news2=new ArrayList<>();
-
+    SwipeRefreshLayout mSwipe;
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    ContentAdapter newsAdapter;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         news3=downloadNews(NEWS_REQUEST_URL);
+        Log.i("whereIAm","I am in onCreate of HOME FRAGMENT");
+        DBAdapter db=new DBAdapter(getContext());
+        db.open();
         typeface=Typeface.createFromAsset(getActivity().getAssets(),"Roboto-Light.ttf");
         Log.v("Volley","SIZE of news:"+news3.size());
     }
@@ -77,42 +85,150 @@ public class HomeFragment extends Fragment
             "https://newsapi.org/v1/articles?source=the-huffington-post&sortBy=top&apiKey=c4c45240182f4d42bfae496c15f40b5a"
     };*/
 
+//This onCreateView method here is without Swipe Refresh Layout.Remember to comment the Swipe Refresh layout in XML file also,when you do not want the Swipe Refresh Layout.
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
+//    {
+//        Log.i("whereIAm","I am in onCreateView of Home Fragment");
+//        Log.i("whatIDo","I am now creating an object of RecyclerView in Home Fragment");
+//        RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
+//        Log.i("whatIDid","I created an object of RecyclerView in Home Fragment");
+//        /*SwipeRefreshLayout mSwipe = (SwipeRefreshLayout) recyclerView.findViewById(R.id.swipeRefreshLayout);
+//        mSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                news3=downloadNews(NEWS_REQUEST_URL);
+//            }
+//        });
+//        mSwipe.setRefreshing(false);*/
+//        try
+//        {
+//            Log.i("whatIDo","I am now setting adapter for recyclerview in Home Fragment");
+//            ContentAdapter newsAdapter=new ContentAdapter(recyclerView.getContext(),news3);
+//            recyclerView.setAdapter(newsAdapter);
+//            newsAdapter.notifyDataSetChanged();
+//            recyclerView.setHasFixedSize(true);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        }
+//        catch (JSONException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        return recyclerView;
+//    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
     {
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
-        /*SwipeRefreshLayout mSwipe = (SwipeRefreshLayout)recyclerView.findViewById(R.id.swipeRefreshLayout);
-        mSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                news3=downloadNews(NEWS_REQUEST_URL);
-            }
-        });*/
+        Log.i("whereIAm","I am in onCreateView of HOME FRAGMENT");
+        Log.i("whatIDo","I am now creating an object of RecyclerView in HOME FRAGMENT");
+        View v=inflater.inflate(R.layout.recycler_view,container,false);
+        //recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
+        recyclerView = (RecyclerView)v.findViewById(R.id.my_recycler_view);
+        Log.i("whatIDid","I created an object of RecyclerView in HOME FRAGMENT");
+        mSwipe=(SwipeRefreshLayout)v.findViewById(R.id.mSwipe);
+        //mSwipe.setColorSchemeResources(R.color.colorPrimary);
         try
         {
-            recyclerView.setAdapter(new ContentAdapter(recyclerView.getContext(),news3));
+            Log.i("whatIDo","I am now setting adapter for recyclerview in HOME FRAGMENT");
+            newsAdapter=new ContentAdapter(recyclerView.getContext(),news3);
+            recyclerView.setAdapter(newsAdapter);
+            newsAdapter.notifyDataSetChanged();
             recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            layoutManager=new LinearLayoutManager(getContext());
+            recyclerView.setLayoutManager(layoutManager);
         }
         catch (JSONException e)
         {
             e.printStackTrace();
         }
-        return recyclerView;
+        mSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mSwipe.setRefreshing(false);
+                downloadNews(NEWS_REQUEST_URL);
+                newsAdapter.notifyDataSetChanged();
+            }
+        });
+
+        //Adding an scroll change listener to recyclerview
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+//                if (isLastItemDisplaying(recyclerView)) {
+//                    //Calling the method getdata again
+//                    getData();
+//                    progressBar.setVisibility(View.GONE);
+//                }
+            }
+        });
+        return v;
     }
+
+
+//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        super.onCreate(savedInstanceState);
+//
+//        mSwipe = (SwipeRefreshLayout) getActivity().findViewById(R.id.mSwipe);
+//        mSwipe.setColorSchemeResources(R.color.colorPrimary);
+//
+//        //Initializing Views
+//        recyclerView = (RecyclerView) getActivity().findViewById(R.id.my_recycler_view);
+//        recyclerView.setHasFixedSize(true);
+//        layoutManager = new LinearLayoutManager(getActivity());
+//        recyclerView.setLayoutManager(layoutManager);
+//
+//        mSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                downloadNews(NEWS_REQUEST_URL);
+//                newsAdapter.notifyDataSetChanged();
+//            }
+//        });
+//
+//        //Adding an scroll change listener to recyclerview
+//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+////                if (isLastItemDisplaying(recyclerView)) {
+////                    //Calling the method getdata again
+////                    getData();
+////                    progressBar.setVisibility(View.GONE);
+////                }
+//            }
+//        });
+//
+//        //initializing our adapter
+//        try {
+//            newsAdapter=new ContentAdapter(recyclerView.getContext(),news3);
+//            newsAdapter.notifyDataSetChanged();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//        //Adding adapter to recyclerview
+//        recyclerView.setAdapter(newsAdapter);
+//    }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
         public ImageView picture;
         public TextView title;
         public TextView description;
+        public ImageButton favorite_button;
         public ViewHolder(LayoutInflater inflater, ViewGroup parent)
         {
             super(inflater.inflate(item_card, parent, false));
+            Log.i("whereIAm","I am in constructor of ViewHolder of HOME FRAGMENT");
             picture = (ImageView) itemView.findViewById(R.id.card_image);
             title = (TextView) itemView.findViewById(R.id.card_title);
             description = (TextView) itemView.findViewById(R.id.card_desc);
+            favorite_button=(ImageButton)itemView.findViewById(R.id.favorite_button);
             title.setTypeface(typeface);
             description.setTypeface(typeface);
+            Log.i("whereIAm","I am exiting constructor of ViewHolder of HOME FRAGMENT");
         }
     }
 
@@ -125,24 +241,29 @@ public class HomeFragment extends Fragment
         // Set numbers of List in RecyclerView.
         Context myContext;
         ArrayList<NewsItem> news;
-
+        DBAdapter db=new DBAdapter(getContext());
         /*private static final String NEWS_REQUEST_URL="https://newsapi.org/v1/articles?source=the-hindu&sortBy=latest&apiKey=c4c45240182f4d42bfae496c15f40b5a";
         ArrayList<NewsItem> news=downloadNews(NEWS_REQUEST_URL);*/
 
 
         public ContentAdapter (Context context,ArrayList<NewsItem> news) throws JSONException {
+            Log.i("whereIAm","I am in constrctor of ContentAdapter of HOME FRAGMENT in class ContentAdapter");
             myContext=context;
             this.news=news;
+            Log.i("whereIAm","I am in exiting constructor of ContentAdapter of HOME FRAGMENT in class ContentAdapter");
         }
 
 
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            Log.i("whereIAm","I am in onCreateViewHolder of HOME FRAGMENT in class ContentAdapter");
             ViewHolder vHolder=new ViewHolder(LayoutInflater.from(parent.getContext()),parent);
+            Log.i("whereIAm","I am exiting onCreateViewHolder of HOME FRAGMENT in class ContentAdapter");
             return vHolder;
         }
 
         public void onBindViewHolder(ViewHolder holder, int position) {
             final NewsItem currentNews=news.get(position);
+            Log.i("whereIAm","I am in onBindViewHolder of HOME FRAGMENT in class ContentAdapter");
             Glide.with(myContext).load(currentNews.getImage()).into(holder.picture);
             holder.title.setText(currentNews.getTitle());
             holder.description.setText(currentNews.getDescription());
@@ -152,6 +273,21 @@ public class HomeFragment extends Fragment
                     startActivity(i);
                 }
             });
+            holder.favorite_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    db.open();
+                    db.insertNews(currentNews.getAuthor(),
+                                  currentNews.getTitle(),
+                                  currentNews.getDescription(),
+                                  currentNews.getUrl(),
+                                  currentNews.getImage(),
+                                  currentNews.getPublishedAt()
+                    );
+                    Toast.makeText(getContext(),"Added to favorites", Toast.LENGTH_SHORT).show();
+                }
+            });
+            Log.i("whereIAm","I am exiting onBindViewHolder of HOME FRAGMENT in class ContentAdapter");
         }
 
 
@@ -177,6 +313,7 @@ public class HomeFragment extends Fragment
     //Method that contains volley code which makes the web request.It takes a String url as an input and outputs a ArrayList<NewsItem> which we pass on to the ContentAdapter.
     public ArrayList<NewsItem> downloadNews(String url)
     {
+        Log.i("whereIAm","I am in downloadNews of HOME FRAGMENT");
         // Instantiate the cache
         Cache cache = new DiskBasedCache(getActivity().getCacheDir(), 2048 * 2048); // 1MB cap
 
@@ -188,7 +325,7 @@ public class HomeFragment extends Fragment
 
         // Start the queue
         mRequestQueue.start();
-
+        Log.i("whatIDo","I am creating a JSON objectrequest of HOME FRAGMENT");
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
             ArrayList<NewsItem> news=new ArrayList<>();
@@ -230,10 +367,14 @@ public class HomeFragment extends Fragment
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.v("Volley","Error");
-                Toast.makeText(getContext(),"HOME FRAGMENT."+error.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(),"HOME FRAGMENT."+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"Please check internet connection for Home page", Toast.LENGTH_LONG).show();
             }
         });
-        mRequestQueue.add(jsonObjectRequest);
+        Log.i("whatIDo","I am adding jsonObjectRequest to requestQueue of HOME FRAGMENT");
+        mRequestQueue.add(jsonObjectRequest).shouldCache();
+        Log.i("whatIDid","I added jsonObjectRequest to requestQueue of HOME FRAGMENT");
+        Log.i("whereIAm","I am exiting a JSON objectrequest of HOME FRAGMENT");
         return news1;
     }
 }
