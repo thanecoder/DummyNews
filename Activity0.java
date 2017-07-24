@@ -1,92 +1,58 @@
 package nichat.com.dummynews;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ArrayList;
 
-public class Activity0 extends AppCompatActivity {
+import static java.lang.Thread.sleep;
+
+
+public class Activity0 extends Activity {
 
     String temp="";
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_0);
-        Thread background =  new Thread() {// Create Thread that will sleep for 5 seconds
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
+
+        Thread background = new Thread() {// Create Thread that will sleep for 5 seconds
             public void run() {
 
                 try {
-                    // Thread will sleep for 5 seconds
-                    sleep(2*1000);
-
-
-                    File file=getBaseContext().getFileStreamPath("mydata.txt");
-                    if(file.exists())
-                    {
-                        try
-                        {
-                            FileInputStream in =new FileInputStream(file);
-                            InputStreamReader isr=new InputStreamReader(in);
-                            char[] inputBuffer=new char[100];
-                            int charRead;
-                            while ((charRead = isr.read(inputBuffer))>0) {
-                                String readString=String.copyValueOf(inputBuffer,0,charRead);
-                                temp+= readString;
-                                inputBuffer=new char[100];
-                            }
-                            if(temp.equals(""))
-                            {
-                                Intent i = new Intent(getBaseContext(),MainActivity.class);
-                                Bundle b=new Bundle();
-                                b.putString("ctgry","Main");
-                                i.putExtras(b);
-                                startActivity(i);
-                            }
-                            if(temp.equals("Sports"))
-                            {
-                                Intent i = new Intent(getBaseContext(),Activity4.class);
-                                startActivity(i);
-                            }
-                            if(temp.equals("Entertainment"))
-                            {
-                                Intent i = new Intent(getBaseContext(),Activity5.class);
-                                startActivity(i);
-                            }
-                            if(temp.equals("Technology"))
-                            {
-                                Intent i = new Intent(getBaseContext(),Activity6.class);
-                                startActivity(i);
-                            }
-                            if(temp.equals("Politics"))
-                            {
-                                Intent i = new Intent(getBaseContext(),Activity7.class);
-                                startActivity(i);
-                            }
-                        }
-                        catch(Exception e)
-                        {
-                            e.printStackTrace();
-                        }
-                    }
-                    else
-                    {
-                        Intent i = new Intent(getBaseContext(), MainActivity.class);
-                        startActivity(i);
-                    }
-
-                    //Remove activity
+                    sleep(2000);
+                    Intent i=new Intent(Activity0.this,MainActivity.class);
+                    startActivity(i);
                     finish();
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         };
-
-        // start thread
         background.start();
     }
+
 }
