@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_bookmark.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-xhdpi\\ic_bookmark.png"
+    },
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_share.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-xhdpi\\ic_share.png"
+    },
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_favorite.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-xhdpi\\ic_favorite.png"
+    },
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_world.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-xhdpi\\ic_world.png"
+    },
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_home.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-xhdpi\\ic_home.png"
+    }
+]

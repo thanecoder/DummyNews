@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_gravity="center"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    app:cardCornerRadius="0dp"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/white">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/card_title"
+                    android:layout_width="190dp"
+                    android:layout_height="75dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/card_image"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:ellipsize="end"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="15sp" />
+                <!--android:layout_below="@+id/card_image"-->
+
+                <TextView
+                    android:id="@+id/card_desc"
+                    android:layout_width="190dp"
+                    android:layout_height="62dp"
+                    android:ellipsize="end"
+                    android:textColor="@color/dark_grey"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12sp"
+                    android:layout_below="@+id/card_title"
+                    android:layout_alignLeft="@+id/card_title"
+                    android:layout_alignStart="@+id/card_title" />
+                <!--android:layout_below="@+id/card_image"-->
+
+                <ImageView
+                    android:id="@+id/card_image"
+                    android:layout_width="80dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@id/card_title"
+                    android:layout_toRightOf="@id/card_title"
+                    android:scaleType="centerCrop" />
+
+
+                <ImageButton
+                    android:id="@+id/favorite_button"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="3dp"
+                    android:tint="@color/button_grey"
+                    app:srcCompat="@drawable/ic_favorite"
+                    android:layout_below="@+id/card_desc"
+                    android:layout_alignLeft="@+id/card_desc"
+                    android:layout_alignStart="@+id/card_desc" />
+
+                <ImageButton
+                    android:id="@+id/favorite_share"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="47dp"
+                    android:layout_marginStart="47dp"
+                    android:layout_marginTop="3dp"
+                    android:tint="@color/button_grey"
+                    app:srcCompat="@drawable/ic_share"
+                    android:layout_below="@+id/card_desc"
+                    android:layout_toRightOf="@+id/favorite_button"
+                    android:layout_toEndOf="@+id/favorite_button" />
+
+        </RelativeLayout>
+
+</android.support.v7.widget.CardView>

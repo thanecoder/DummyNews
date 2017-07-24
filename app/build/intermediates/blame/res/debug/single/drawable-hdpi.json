@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_share.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_share.png"
+    },
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_favorite.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_favorite.png"
+    },
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_home.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_home.png"
+    },
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_bookmark.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_bookmark.png"
+    },
+    {
+        "merged": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_world.png",
+        "source": "C:\\Users\\NICHAT\\AndroidStudioProjects\\Android\\DummyNews\\app\\src\\main\\res\\drawable-hdpi\\ic_world.png"
+    }
+]
